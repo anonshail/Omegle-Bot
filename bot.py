@@ -1,4 +1,5 @@
 from pyomegle import OmegleClient, OmegleHandler
+import time
 
 """
     Omegle inteface for python
@@ -41,7 +42,7 @@ interests = ['discord',
              'singing']
 
 h = OmegleHandler(loop=True)            # session loop
-c = OmegleClient(h, wpm=47, lang='en', topics=interests)  # 47 words per minute
+c = OmegleClient(h, wpm=30, lang='en', topics=interests)  # 30 words per minute
 c.start()
 
 '''
@@ -59,6 +60,8 @@ while 1:
 
 while True:
     input_str = "Hey! We seem to have common interests! Come to our server, and find like minded people! We'd love to see you! Invite: https://discord.gg/vzResA"
+    time.sleep(5)
     c.next()
     c.send(input_str)
     c.disconnect()
+    time.sleep(30) # so that we don't get banned
